@@ -1783,21 +1783,6 @@ async function deleteAccount(accountId) {
   }
 }
 
-// Refresh current resource tab
-function refreshResourceTab() {
-  const activeTab = document.querySelector('.resource-tabs .tab-btn.active')
-  if (activeTab) {
-    const tabType = activeTab.textContent.toLowerCase().trim()
-    if (tabType.includes('prox')) loadProxies()
-    else if (tabType.includes('card')) loadCards()
-    else if (tabType.includes('email')) loadEmails()
-    else if (tabType.includes('account')) loadAccounts()
-  } else {
-    // Default: reload all
-    loadProxies()
-  }
-}
-
 function connectWebSocket() {
   const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:'
   const wsUrl = `${protocol}//${window.location.host}/api/monitor/ws`
